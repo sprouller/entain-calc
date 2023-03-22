@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const CURRENCY_SELECTOR = 'currency';
 
   //Get params based on above ids
-    const savings = document.getElementById(SAVINGS_INPUT);
+  const savings = document.getElementById(SAVINGS_INPUT);
   const initial = document.getElementById(INITIAL_TEXT);
   const number = document.getElementById(NUMBER_TEXT);
   const sharePrice = document.getElementById(SHARE_TEXT);
@@ -36,11 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateTotals = (savingsVal, increaseVal) => {
         
-        const roundMe = (x) =>{
-            
-            test = new Intl.NumberFormat(currencyFormat, { style: 'currency', currency: currencyCode }).format(x);
-            return test;
-        }
+      const roundMeCurrency = (x) =>{
+        test = new Intl.NumberFormat('en-GB', { style: 'currency', currency: currencyCode }).format(x);
+        return test;
+    }
+
+      const roundMe = (x) =>{
+        test = new Intl.NumberFormat().format(x);
+        return test;
+    }
 
         updateInitial = savingsVal * 36;
         updateNumber = updateInitial / entainOptionPrice;
@@ -48,12 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateChange = updateValue * (1+(increaseVal/100));
         updateProfit = updateChange - updateInitial;
         
-        initial.textContent = roundMe(updateInitial);
+        initial.textContent = roundMeCurrency(updateInitial);
         number.textContent = roundMe(updateNumber);
-        value.textContent = roundMe(updateValue);
-        change.textContent = roundMe(updateChange);
-        profit.textContent = roundMe(updateProfit);
-        sliderVal.textContent = roundMe(increaseVal);
+        value.textContent = roundMeCurrency(updateValue);
+        change.textContent = roundMeCurrency(updateChange);
+        profit.textContent = roundMeCurrency(updateProfit);
+        sliderVal.textContent = roundMeCurrency(increaseVal);
 
     }
 
