@@ -15,3 +15,15 @@ const options = {
     .catch(err => console.error(err));
 
     console.log(response);
+
+
+/*
+  const options = {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}};
+  
+  fetch('https://api.polygon.io/v2/aggs/ticker/ENT/prev?adjusted=true&apiKey=aZh8vGCDo97RwDvwRyLgN344yb1VYRpp', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+    */
