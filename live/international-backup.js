@@ -80,86 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const entainOptionPrice = 12.50;
     const entainSharePrice = 15;
 
-    const updateTotals = (savingsVal, increaseVal, chosenCurrency) => {
-
-      const roundMeFX = (x) =>{
-        test = new Intl.NumberFormat('en-GB', { style: 'currency', currency: chosenCurrency }).format(x);
-        return test;
-    }
-
-
-      switch(chosenCurrency) {
-        case "GBP":
-          fxOptionPrice = entainOptionPrice;
-          fxSharePrice = entainSharePrice;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "AUD":
-          fxOptionPrice = entainOptionPrice/fxAUD;
-          fxSharePrice = entainSharePrice/fxAUD;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "BGN":
-          fxOptionPrice = entainOptionPrice/fxBGN;
-          fxSharePrice = entainSharePrice/fxBGN;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "CAD":
-          fxOptionPrice = entainOptionPrice/fxCAD;
-          fxSharePrice = entainSharePrice/fxCAD;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "DKK":
-          fxOptionPrice = entainOptionPrice/fxDKK;
-          fxSharePrice = entainSharePrice/fxDKK;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "EUR":
-          fxOptionPrice = entainOptionPrice/fxEUR;
-          fxSharePrice = entainSharePrice/fxEUR;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "GEL":
-          fxOptionPrice = entainOptionPrice/fxGEL;
-          fxSharePrice = entainSharePrice/fxGEL;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "GIP":
-          fxOptionPrice = entainOptionPrice/fxGIP;
-          fxSharePrice = entainSharePrice/fxGIP;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "ILS":
-          fxOptionPrice = entainOptionPrice/fxILS;
-          fxSharePrice = entainSharePrice/fxILS;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "INR":
-          fxOptionPrice = entainOptionPrice/fxINR;
-          fxSharePrice = entainSharePrice/fxINR;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "PHP":
-          fxOptionPrice = entainOptionPrice/fxPHP;
-          fxSharePrice = entainSharePrice/fxPHP;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "PLN":
-          fxOptionPrice = entainOptionPrice/fxPLN;
-          fxSharePrice = entainSharePrice/fxPLN;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "SEK":
-          fxOptionPrice = entainOptionPrice/fxSEK;
-          fxSharePrice = entainSharePrice/fxSEK;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-        case "UYU":
-          fxOptionPrice = entainOptionPrice/fxUYU;
-          fxSharePrice = entainSharePrice/fxUYU;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
-    }
+    const updateTotals = (savingsVal, increaseVal, chosenCurrency, optionPrice) => {
 
         const roundMeCurrency = (x) =>{
             test = new Intl.NumberFormat('en-GB', { style: 'currency', currency: chosenCurrency }).format(x);
@@ -171,10 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
           return test;
       }
 
-
         updateInitial = savingsVal * 36;
-        updateNumber = updateInitial / fxOptionPrice;
-        updateValue = updateNumber * fxSharePrice;
+        updateNumber = updateInitial / optionPrice;
+        updateValue = updateNumber * entainSharePrice;
         updateChange = updateValue * (1+(increaseVal/100));
         updateProfit = updateChange - updateInitial;
         
@@ -210,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-    currency.addEventListener('change', () => {
+    currency.addEventListener('input', () => {
       const chosenCurrency = currency.value;
       const savingsVal = 0;
       const increaseVal = 0;
@@ -219,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         savings.placeholder = `Enter an amount between ${minAUD} and ${maxAUD}`;
         savings.setAttribute("min", minAUD);
         savings.setAttribute("max", maxAUD)
+        optionPrice = entainOptionPrice/fxAUD;
         }
     
       else if (chosenCurrency === "BGN") {
@@ -299,6 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
           savings.setAttribute("max", maxGBP)
         } 
 
-      updateTotals(savingsVal, increaseVal, chosenCurrency)
+      updateTotals(savingsVal, increaseVal, chosenCurrency, optionPrice)
   });
 });
