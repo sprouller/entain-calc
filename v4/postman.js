@@ -19,8 +19,9 @@ getSharePrice().then(sharePriceJSON => {
   for (let i = 0; i < sharePriceJSON.length; i++) {
     if (sharePriceJSON[i].ticker === 'ENT.XLON') {
       entSharePrice = sharePriceJSON[i].EOD;
+      console.log(entSharePrice);
       break;
     }
   }
-  sharePrice.textContent = entSharePrice;
+  return entSharePrice;
 });

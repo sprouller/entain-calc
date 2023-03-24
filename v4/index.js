@@ -22,22 +22,56 @@ document.addEventListener('DOMContentLoaded', () => {
   const profit = document.getElementById(PROFIT_TEXT);
   const sliderVal = document.getElementById(SLIDER_VAL);
 
-  //Fixed vals
-  const entainOptionPrice = 12.50;
-  const entainSharePrice = 15;
+  //Function to round share price
+  const roundSharePrice = (x) => {
+    divideMe = x/100;
+    test = new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: 'GBP',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(divideMe);
+    return test;
+}
 
-  // Get live share price
+
+  //Get share price from direct DB query
+  var myHeaders = new Headers();
+  myHeaders.append("apikey", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3eHlobWJscGl4emZ0ZmFxZmVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzk1ODE4MDMsImV4cCI6MTk5NTE1NzgwM30.z4VWGW-Y5Lo8_zX8WnaNNkPNt5BbHDbga-uukGzxs3A");
+  myHeaders.append("Authorization", "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3eHlobWJscGl4emZ0ZmFxZmVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzk1ODE4MDMsImV4cCI6MTk5NTE1NzgwM30.z4VWGW-Y5Lo8_zX8WnaNNkPNt5BbHDbga-uukGzxs3A");
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
+  let entSharePrice = 0;
+
   async function getSharePrice() {
-    const response = await fetch('https://shareprice-inky.vercel.app/api/shareprice');
+    const response = await fetch("https://hwxyhmblpixzftfaqfea.supabase.co/rest/v1/shareprice", requestOptions);
     const sharePriceJSON = await response.json();
     return sharePriceJSON;
   }
   
-  getSharePrice().then(sharePriceJSON => {
-    const obj = sharePriceJSON[0]; // Access the first object in the array
-    const specific = obj.EOD; // Access the EOD property of the object
-    console.log(specific); // Log the value of EOD to the console
-  });
+  getSharePrice()
+    .then(sharePriceJSON => {
+      for (let i = 0; i < sharePriceJSON.length; i++) {
+        if (sharePriceJSON[i].ticker === 'ENT.XLON') {
+          entSharePrice = sharePriceJSON[i].EOD;
+        }
+      }
+      return entSharePrice; // return entain share price from this function
+    })
+    .then(entSharePrice => {
+      window.globalSharePrice = entSharePrice; // assign the value of entSharePrice to entainSharePrice
+      sharePrice.textContent = roundSharePrice(entSharePrice);
+      return entSharePrice;
+    })
+   
+  //Fixed vals
+  const entainOptionPrice = 12.50;
+  const liveSharePrice = entSharePrice;
 
   //Set currency vals
   let currencyCode = 'GBP';
