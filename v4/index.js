@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sharePriceJSON = await response.json();
     return sharePriceJSON;
   }
-  
+
   getSharePrice()
     .then(sharePriceJSON => {
       for (let i = 0; i < sharePriceJSON.length; i++) {
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateInitial = savingsVal * 36;
         updateNumber = Math.floor(updateInitial / entainOptionPrice);
-        updateValue = Math.round(updateNumber * entainSharePrice);
+        updateValue = Math.round(updateNumber * entSharePrice);
         updateChange = updateValue * (1+(increaseVal/100));
         updateProfit = updateChange - updateInitial;
         
