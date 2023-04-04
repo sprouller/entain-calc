@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const PROFIT_TEXT = 'profit';
   const SLIDER_VAL = 'sliderVal';
   const CURRENCY_SELECTOR = 'currency';
+  const OPTION_PRICE = 'optionPrice';
 
   //Get params based on above ids
   const savings = document.getElementById(SAVINGS_INPUT);
@@ -20,14 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const increase = document.getElementById(SLIDER);
   const change = document.getElementById(CHANGE_TEXT);
   const profit = document.getElementById(PROFIT_TEXT);
-  //const sliderVal = document.getElementById(SLIDER_VAL);
+  const sliderVal = document.getElementById(SLIDER_VAL);
+  const optionPrice = document.getElementById(OPTION_PRICE);
 
+  //Function to round share price
+  const roundSharePrice = (x) => {
+    test = new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: 'GBP',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(x);
+    return test;
+}
+
+  let entSharePrice = 12.59;
+  let entOptionPrice = 10.08;
+   
   //Fixed vals
-  const entainOptionPrice = 10.80;
-  const entainSharePrice = 12.59;
-  //sharePrice.textContent = roundMeCurrency(entainSharePrice);
-
-
+  const entainOptionPrice = 10.08;
+  const liveSharePrice = entSharePrice;
+  sharePrice.textContent = roundSharePrice(liveSharePrice);
+  optionPrice.textContent = roundSharePrice(entOptionPrice);
 
   //Set currency vals
   let currencyCode = 'GBP';
@@ -51,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateInitial = savingsVal * 36;
         updateNumber = Math.floor(updateInitial / entainOptionPrice);
-        updateValue = Math.round(updateNumber * entainSharePrice);
+        updateValue = Math.round(updateNumber * entSharePrice);
         updateChange = updateValue * (1+(increaseVal/100));
         updateProfit = updateChange - updateInitial;
         
@@ -88,4 +103,5 @@ document.addEventListener('DOMContentLoaded', () => {
     e.target.setAttribute('aria-invalid', !isValid);
   });
 
+  
 });
