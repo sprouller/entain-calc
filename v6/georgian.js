@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Min Max Vals
     const minGBP = 5;
-    const maxGBP = 120;
+    const maxGBP = 100;
     const minAUD = 9;
     const maxAUD = 175;
     const minBGN = 11;
