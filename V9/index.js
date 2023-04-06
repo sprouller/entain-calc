@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return test;
 }
 
-  let entSharePrice = 12.59;
+  let entSharePrice = 12.37;
   let entOptionPrice = 10.08;
    
   //Fixed vals
