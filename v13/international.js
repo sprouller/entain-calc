@@ -105,11 +105,6 @@ sharePrice.textContent = roundSharePrice(entSharePrice);
 
 
       switch(chosenCurrency) {
-        case "GBP":
-          fxOptionPrice = entainOptionPrice;
-          fxSharePrice = entainSharePrice;
-          option.textContent = roundMeFX(fxOptionPrice);
-          break;
         case "AUD":
           fxOptionPrice = entainOptionPrice/fxAUD;
           fxSharePrice = entainSharePrice/fxAUD;
@@ -235,79 +230,79 @@ sharePrice.textContent = roundSharePrice(entSharePrice);
       const increaseVal = 0;
       
       if (chosenCurrency === "AUD") {
-        savings.placeholder = `Ingrese una cantidad entre ${minAUD} y ${maxAUD}`;
+        savings.placeholder = `Enter an amount between ${minAUD} and ${maxAUD}`;
         savings.setAttribute("min", minAUD);
         savings.setAttribute("max", maxAUD)
         }
     
       else if (chosenCurrency === "BGN") {
-        savings.placeholder = `Ingrese una cantidad entre ${minBGN} y ${maxBGN}`;
+        savings.placeholder = `Enter an amount between ${minBGN} and ${maxBGN}`;
         savings.setAttribute("min", minBGN);
         savings.setAttribute("max", maxBGN)
       }
 
       else if (chosenCurrency === "CAD") {
-        savings.placeholder = `Ingrese una cantidad entre ${minCAD} y ${maxCAD}`;
+        savings.placeholder = `Enter an amount between ${minCAD} and ${maxCAD}`;
         savings.setAttribute("min", minCAD);
         savings.setAttribute("max", maxCAD)
         }
       
       else if (chosenCurrency === "DKK") {
-        savings.placeholder = `Ingrese una cantidad entre ${minDKK} y ${maxDKK}`;
+        savings.placeholder = `Enter an amount between ${minDKK} and ${maxDKK}`;
         savings.setAttribute("min", minDKK);
         savings.setAttribute("max", maxDKK)
         }
 
       else if (chosenCurrency === "EUR") {
-        savings.placeholder = `Ingrese una cantidad entre ${minEUR} y ${maxEUR}`;
+        savings.placeholder = `Enter an amount between ${minEUR} and ${maxEUR}`;
         savings.setAttribute("min", minEUR);
         savings.setAttribute("max", maxEUR)
         }  
 
       else if (chosenCurrency === "GEL") {
-        savings.placeholder = `Ingrese una cantidad entre ${minGEL} y ${maxGEL}`;
+        savings.placeholder = `Enter an amount between ${minGEL} and ${maxGEL}`;
         savings.setAttribute("min", minGEL);
         savings.setAttribute("max", maxGEL)
         }  
 
       else if (chosenCurrency === "GIP") {
-        savings.placeholder = `Ingrese una cantidad entre ${minGIP} y ${maxGIP}`;
+        savings.placeholder = `Enter an amount between ${minGIP} and ${maxGIP}`;
         savings.setAttribute("min", minGIP);
         savings.setAttribute("max", maxGIP)
         }  
 
       else if (chosenCurrency === "ILS") {
-        savings.placeholder = `Ingrese una cantidad entre ${minILS} y ${maxILS}`;
+        savings.placeholder = `Enter an amount between ${minILS} and ${maxILS}`;
         savings.setAttribute("min", minILS);
         savings.setAttribute("max", maxILS)
         }  
 
       else if (chosenCurrency === "INR") {
-        savings.placeholder = `Ingrese una cantidad entre ${minINR} y ${maxINR}`;
+        savings.placeholder = `Enter an amount between ${minINR} and ${maxINR}`;
         savings.setAttribute("min", minINR);
         savings.setAttribute("max", maxINR)
         }  
 
       else if (chosenCurrency === "PHP") {
-        savings.placeholder = `Ingrese una cantidad entre ${minPHP} y ${maxPHP}`;
+        savings.placeholder = `Enter an amount between ${minPHP} and ${maxPHP}`;
         savings.setAttribute("min", minPHP);
         savings.setAttribute("max", maxPHP)
         }
 
       else if (chosenCurrency === "SEK") {
-        savings.placeholder = `Ingrese una cantidad entre ${minSEK} y ${maxSEK}`;
+        savings.placeholder = `Enter an amount between ${minSEK} and ${maxSEK}`;
         savings.setAttribute("min", minSEK);
         savings.setAttribute("max", maxSEK)
         }  
 
       else if (chosenCurrency === "UYU") {
-        savings.placeholder = `Ingrese una cantidad entre ${minUYU} y ${maxUYU}`;
+        savings.placeholder = `Enter an amount between ${minUYU} and ${maxUYU}`;
         savings.setAttribute("min", minUYU);
         savings.setAttribute("max", maxUYU)
         } 
       
         else {
-          savings.placeholder = `Ingrese una cantidad entre ${minGBP} y ${maxGBP}`;
+          savings.placeholder = `Enter an amount between ${minGBP} and ${maxGBP}`;
           savings.setAttribute("min", minGBP);
           savings.setAttribute("max", maxGBP)
         } 
