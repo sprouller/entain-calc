@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
  
 //Fixed vals
-const entSharePrice = 12.97;
+const entSharePrice = 12.87;
 const entOptionPrice = 10.08;
 
 //Update inital vals
